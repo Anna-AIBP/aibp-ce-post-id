@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AIBP C&E Indonesia — Report Preview (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --id-blue: #4B64AE;
+    --id-blue-dark: #2E3F73;
+    --id-blue-light: #EDF0F9;
+    --id-gold: #A8A583;
+    --id-black: #3C3838;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    color: var(--id-black);
+    background: #F7F7F5;
+  }
+  h1, h2, h3, h4 { font-family: 'Crimson Pro', serif; margin: 0; }
+  .banner {
+    background: #fff3cd; color: #664d03; text-align: center; font-size: 13px;
+    padding: 8px 16px; font-family: 'Lato', sans-serif; font-weight: 700;
+  }
+  .hero {
+    background: linear-gradient(135deg, var(--id-blue) 0%, var(--id-blue-dark) 100%);
+    color: #fff; padding: 56px 24px 72px; text-align: center;
+  }
+  .hero .eyebrow {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 700; opacity: 0.85; margin-bottom: 12px;
+  }
+  .hero h1 { font-size: 34px; font-weight: 800; line-height: 1.2; max-width: 640px; margin: 0 auto 14px; }
+  .hero p { max-width: 560px; margin: 0 auto; font-size: 15px; line-height: 1.6; opacity: 0.92; }
+  .hero .dates { margin-top: 22px; font-size: 14px; font-weight: 700; }
+
+  .endorse {
+    max-width: 720px; margin: -40px auto 0; background: #fff; border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 20px 28px; display: flex;
+    justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;
+  }
+  .endorse .col p.label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; font-weight: 700; margin-bottom: 6px; }
+
+  /* ============================================================
+     PHOTO SLOTS — how to add your own pictures
+     Each slot below shows a filename in small grey text, e.g. "photos/hero-1.jpg".
+     1. Make a folder called "photos" in the SAME folder as this HTML file.
+     2. Save your image into that folder using EXACTLY that filename.
+     3. Refresh this page in your browser — the photo appears automatically,
+        replacing the grey placeholder. No editing of this file needed.
+     ============================================================ */
+  .photo-slot { position: relative; overflow: hidden; background: #e8eaf2; border-radius: 10px; }
+  .photo-slot .filename {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 8px; font-family: monospace; font-size: 10px; color: #7d88b3; line-height: 1.5;
+  }
+  .photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  .endorse-logo { height: 40px; width: 110px; }
+
+  .section { max-width: 780px; margin: 0 auto; padding: 48px 24px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 12px; text-align: center; }
+  .stat-card .num { font-family: 'Crimson Pro', serif; font-size: 30px; font-weight: 800; color: var(--id-blue); }
+  .stat-card .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
+
+  .segment-label {
+    display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 800; color: #fff; background: var(--id-blue); padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .intro-box {
+    background: linear-gradient(135deg, rgba(168,165,131,0.12), rgba(75,100,174,0.06));
+    border: 1px solid rgba(168,165,131,0.3); border-radius: 16px; padding: 18px 22px; margin-bottom: 18px;
+    font-size: 14px; line-height: 1.6; color: #444;
+  }
+
+  .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+  .card .row { display: flex; flex-wrap: wrap; }
+  .card .col { flex: 1; min-width: 220px; padding: 18px; }
+  .card .col + .col { border-left: 1px solid #f0f0f0; }
+  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .card p.meta { font-size: 12px; color: #888; margin: 0 0 10px; }
+  .card p.desc { font-size: 13px; line-height: 1.6; color: #555; }
+  .pill-btn {
+    display: block; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: 10px; border-radius: 999px; margin-top: 10px; text-decoration: none;
+  }
+  .pill-btn.solid { background: var(--id-blue); color: #fff; }
+  .pill-btn.outline { border: 1.5px solid var(--id-blue); color: var(--id-blue); }
+  .photo-ph { background: #e8eaf2; border-radius: 10px; height: 90px; margin-top: 10px; }
+  .session-photo { height: 110px; margin-top: 10px; }
+  .sponsor-logo-slot { height: 46px; width: 100%; margin-bottom: 6px; }
+
+  .award-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+  .award-card .cat { font-size: 11px; color: var(--id-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+  .award-card h4 { margin-top: 6px; font-size: 17px; }
+  .award-card .quote { font-size: 13px; font-style: italic; color: #666; margin-top: 8px; border-left: 3px solid var(--id-blue); padding-left: 10px; }
+
+  .network-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+  .network-card .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .network-card .logo-ph { height: 34px; width: 80px; background: #eee; border-radius: 4px; }
+  .network-card a.article { font-size: 12px; color: var(--id-blue); font-weight: 700; text-decoration: none; }
+  .network-card .count { font-size: 12px; color: var(--id-blue); font-weight: 800; white-space: nowrap; }
+
+  .pending { background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #f2f2f2 10px, #f2f2f2 20px); border: 1.5px dashed #ccc; border-radius: 12px; padding: 16px 20px; color: #999; font-size: 13px; text-align: center; margin-bottom: 12px; }
+
+  .speaker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .speaker { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 12px; }
+  .speaker .name { font-size: 13px; font-weight: 700; }
+  .speaker .role { font-size: 11px; color: #777; margin-top: 2px; line-height: 1.4; }
+
+  .sponsor-tier-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--id-blue); margin: 16px 0 8px; }
+  .sponsor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .sponsor-chip { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px 12px; font-size: 12px; font-weight: 700; text-align: center; }
+
+  .data-note { font-size: 11px; color: #999; margin: -4px 0 16px; font-style: italic; }
+  .country-bar-row { display: flex; align-items: center; gap: 10px; font-size: 12px; margin-bottom: 6px; }
+  .country-bar-row .name { width: 90px; color: #666; flex-shrink: 0; }
+  .country-bar-row .bar { background: var(--id-blue-light); border-radius: 4px; height: 14px; flex: 1; position: relative; }
+  .country-bar-row .bar span { position: absolute; inset: 0; background: var(--id-blue); border-radius: 4px; }
+  .country-bar-row .n { width: 30px; text-align: right; color: #666; }
+
+  footer { text-align: center; padding: 40px 24px; font-size: 12px; color: #999; }
+</style>
+</head>
+<body>
+
+<div class="banner">Stats, speakers, sponsors and networking sessions below are REAL, pulled from Firebase. Sessions/panels, awards and testimonials are still placeholder — that content doesn't exist anywhere yet. Every grey box below is a photo slot — see the filename printed inside it, and the instructions at the top of the CSS if viewing source.</div>
+
+<div class="hero">
+  <div class="eyebrow">Post-show report</div>
+  <h1>54th AIBP Conference &amp; Exhibition Indonesia</h1>
+  <p>Two days of dialogue, deal-making and discovery bringing together Indonesia's industrial and technology leaders — a look back at the sessions, speakers and moments that made this edition.</p>
+  <div class="dates">26–27 August 2026 · Four Seasons Hotel, Jakarta</div>
+</div>
+
+<div class="section" style="padding-top:24px; padding-bottom:0;">
+  <div class="sponsor-tier-label" style="margin-top:0;">Hero photos</div>
+  <div style="display:flex; gap:10px;">
+    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-1.jpg</div><img src="photos/hero-1.jpg" alt="" onerror="this.style.display='none'"></div>
+    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-2.jpg</div><img src="photos/hero-2.jpg" alt="" onerror="this.style.display='none'"></div>
+    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-3.jpg</div><img src="photos/hero-3.jpg" alt="" onerror="this.style.display='none'"></div>
+  </div>
+</div>
+
+<div class="endorse">
+  <div class="col"><p class="label">Endorsed by</p><div class="photo-slot endorse-logo"><div class="filename">photos/endorsed-by.png</div><img src="photos/endorsed-by.png" alt="" onerror="this.style.display='none'"></div></div>
+  <div class="col"><p class="label">Supported by</p><div class="photo-slot endorse-logo"><div class="filename">photos/supported-by.png</div><img src="photos/supported-by.png" alt="" onerror="this.style.display='none'"></div></div>
+  <div class="col"><p class="label">Pavilion host</p><div class="photo-slot endorse-logo"><div class="filename">photos/pavilion-host.png</div><img src="photos/pavilion-host.png" alt="" onerror="this.style.display='none'"></div></div>
+</div>
+
+<div class="section">
+  <div class="segment-label">By the numbers — real, from Firebase</div>
+  <div class="stats">
+    <div class="stat-card"><div class="num">599</div><div class="label">Registered</div></div>
+    <div class="stat-card"><div class="num">286</div><div class="label">Checked in Day 1</div></div>
+    <div class="stat-card"><div class="num">328</div><div class="label">Companies</div></div>
+    <div class="stat-card"><div class="num">32</div><div class="label">Speakers</div></div>
+  </div>
+  <p class="data-note">Day 2 check-in shows only 1 record in the export — looks like a sync gap, not a real number. Worth checking the source before this goes live.</p>
+
+  <div class="sponsor-tier-label">By country</div>
+  <div class="country-bar-row"><div class="name">Indonesia</div><div class="bar"><span style="width:100%"></span></div><div class="n">445</div></div>
+  <div class="country-bar-row"><div class="name">Singapore</div><div class="bar"><span style="width:8.5%"></span></div><div class="n">38</div></div>
+  <div class="country-bar-row"><div class="name">Thailand</div><div class="bar"><span style="width:0.5%"></span></div><div class="n">2</div></div>
+  <div class="country-bar-row"><div class="name">Malaysia</div><div class="bar"><span style="width:0.2%"></span></div><div class="n">1</div></div>
+</div>
+
+<div class="section">
+  <div class="segment-label">Speakers — real roster (32)</div>
+  <p class="data-note">Not yet mapped to individual sessions — that mapping lives in the agenda sheet, not Firebase. Showing the full confirmed roster instead.</p>
+  <div class="speaker-grid">
+    <div class="speaker"><div class="name">Willis Lim</div><div class="role">Executive Director, CyberSG TIG Collaboration Centre</div></div>
+    <div class="speaker"><div class="name">Arief Noorman</div><div class="role">Head of Cyber Risk &amp; DPO, Allo Bank</div></div>
+    <div class="speaker"><div class="name">Risman Adnan</div><div class="role">CTO, ParagonCorp</div></div>
+    <div class="speaker"><div class="name">Ni Made Sunarti</div><div class="role">SVP Data Management, CIMB Niaga</div></div>
+    <div class="speaker"><div class="name">Norman Sasono</div><div class="role">CTO, DANA</div></div>
+    <div class="speaker"><div class="name">Anggia Agrimiradj</div><div class="role">VP Digital Wholesale Strategy, BRI</div></div>
+    <div class="speaker"><div class="name">Herman Cahyadi</div><div class="role">Head of People, GoTo/Gojek</div></div>
+    <div class="speaker"><div class="name">Arief Ristanto</div><div class="role">Cybersecurity Head, Astra International</div></div>
+    <div class="speaker"><div class="name">Bondan Widiawan</div><div class="role">Deputy for Cybersecurity, BSSN</div></div>
+  </div>
+  <p class="data-note" style="text-align:center; margin-top:10px;">+ 23 more in the full roster</p>
+</div>
+
+<div class="section">
+  <div class="segment-label">Day 1 &amp; 2 — Sessions</div>
+  <div class="pending">Session titles, descriptions, moderators and panelists live in the ID_Agenda Google Sheet, not Firebase — not pulled in yet. Placeholder below shows the intended shape.</div>
+  <div class="card" style="opacity:0.5">
+    <div class="row">
+      <div class="col">
+        <p class="meta">Panel discussion — placeholder</p>
+        <h4>Session title goes here</h4>
+        <p class="desc">Description pending from ID_Agenda.</p>
+      </div>
+      <div class="col">
+        <p class="meta">Moderator / Panelists</p>
+        <p class="desc">Pending — will likely draw from the 32-name speaker roster above once sessions are mapped.</p>
+        <div class="photo-slot session-photo"><div class="filename">photos/day1-session-1.jpg</div><img src="photos/day1-session-1.jpg" alt="" onerror="this.style.display='none'"></div>
+      </div>
+    </div>
+  </div>
+  <p class="data-note">One example photo slot shown above — once sessions are real, each will get its own numbered slot (day1-session-2.jpg, day2-session-1.jpg, etc).</p>
+</div>
+
+<div class="section">
+  <div class="segment-label">Awards</div>
+  <div class="pending">Award categories, winners, judges and quotes aren't in Firebase or any sheet yet — this is entirely new editorial content, same as it was for Malaysia.</div>
+</div>
+
+<div class="section">
+  <div class="segment-label">Networking sessions — real (5)</div>
+  <p class="data-note">Titles and attendance counts are real, pulled directly from Firebase. Descriptions/summaries still need writing.</p>
+
+  <div class="network-card">
+    <div class="top">
+      <div><h4>Roundtable: Strategic AI &amp; IT Investments — Driving Business Resilience</h4><p class="meta">26 August, 10:45–11:45</p></div>
+      <span class="count">13 attended</span>
+    </div>
+  </div>
+  <div class="network-card">
+    <div class="top">
+      <div><h4>Private Lunch: AI for Cybersecurity — Fighting AI with AI</h4><p class="meta">26 August, 13:00–14:00</p></div>
+      <span class="count">16 attended</span>
+    </div>
+  </div>
+  <div class="network-card">
+    <div class="top">
+      <div><h4>Workshop / Private Networking Reception for AI &amp; Cyber Leaders</h4><p class="meta">26 August, 15:25–16:25</p></div>
+      <span class="count">17 attended</span>
+    </div>
+  </div>
+  <div class="network-card">
+    <div class="top">
+      <div><h4>Workshop: Securing the Backbone — Cyber Resilience for Critical Infrastructure</h4><p class="meta">27 August, 10:30–11:30</p></div>
+      <span class="count" style="color:#c66">0 attended*</span>
+    </div>
+  </div>
+  <div class="network-card">
+    <div class="top">
+      <div><h4>Lunch Workshop: AI Guardrails for Enterprise — Protecting Data While Enabling Innovation</h4><p class="meta">27 August, 12:35–14:00</p></div>
+      <span class="count" style="color:#c66">0 attended*</span>
+    </div>
+  </div>
+  <p class="data-note">* Both 0-attendance sessions are on Day 2, same day the check-in numbers above look incomplete — probably the same sync gap, not sessions nobody attended.</p>
+</div>
+
+<div class="section">
+  <div class="segment-label">Sponsors — real (17)</div>
+  <p class="data-note">Top-tier sponsors get a logo slot; exhibitors are name-only, matching how the Malaysia report treats tiers.</p>
+
+  <div class="sponsor-tier-label">Platinum</div>
+  <div class="sponsor-grid">
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-tricentis.png</div><img src="photos/sponsor-tricentis.png" alt="" onerror="this.style.display='none'"></div>Tricentis</div>
+  </div>
+  <div class="sponsor-tier-label">Gold</div>
+  <div class="sponsor-grid">
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-concentric-ai.png</div><img src="photos/sponsor-concentric-ai.png" alt="" onerror="this.style.display='none'"></div>Concentric AI</div>
+  </div>
+  <div class="sponsor-tier-label">Silver</div>
+  <div class="sponsor-grid">
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-veeam.png</div><img src="photos/sponsor-veeam.png" alt="" onerror="this.style.display='none'"></div>Veeam Software</div>
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-kong.png</div><img src="photos/sponsor-kong.png" alt="" onerror="this.style.display='none'"></div>Kong</div>
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-workato.png</div><img src="photos/sponsor-workato.png" alt="" onerror="this.style.display='none'"></div>Workato</div>
+  </div>
+  <div class="sponsor-tier-label">AI Security Partner</div>
+  <div class="sponsor-grid">
+    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-terminal3.png</div><img src="photos/sponsor-terminal3.png" alt="" onerror="this.style.display='none'"></div>TERMINAL 3</div>
+  </div>
+  <div class="sponsor-tier-label">Exhibitors</div>
+  <div class="sponsor-grid">
+    <div class="sponsor-chip">E-CQurity</div>
+    <div class="sponsor-chip">SoftScheck Singapore</div>
+    <div class="sponsor-chip">Netrust</div>
+    <div class="sponsor-chip">Spentera</div>
+    <div class="sponsor-chip">ThreatBook</div>
+    <div class="sponsor-chip">Gaincontrol</div>
+    <div class="sponsor-chip">Digify</div>
+    <div class="sponsor-chip">Blackscore</div>
+    <div class="sponsor-chip">CyberKnights</div>
+    <div class="sponsor-chip">Zeroport</div>
+    <div class="sponsor-chip">AxisNow</div>
+  </div>
+  <p class="data-note" style="margin-top:12px;">Logos aren't in Firebase (all blank) — that's the "images later" part you mentioned.</p>
+</div>
+
+<footer>AIBP Conference &amp; Exhibition Indonesia — real stats/speakers/sponsors/networking, placeholder sessions/awards, no photos yet</footer>
+
+</body>
+</html>
