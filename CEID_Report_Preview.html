@@ -2,294 +2,285 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AIBP C&E Indonesia — Report Preview (mockup)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<title>AIBP C&E Indonesia — Post-Conference Report</title>
 <style>
-  :root {
-    color-scheme: light;
-    --id-blue: #4B64AE;
-    --id-blue-dark: #2E3F73;
-    --id-blue-light: #EDF0F9;
-    --id-gold: #A8A583;
-    --id-black: #3C3838;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    color: var(--id-black);
-    background: #F7F7F5;
-  }
-  h1, h2, h3, h4 { font-family: 'Crimson Pro', serif; margin: 0; }
-  .banner {
-    background: #fff3cd; color: #664d03; text-align: center; font-size: 13px;
-    padding: 8px 16px; font-family: 'Lato', sans-serif; font-weight: 700;
-  }
-  .hero {
-    background: linear-gradient(135deg, var(--id-blue) 0%, var(--id-blue-dark) 100%);
-    color: #fff; padding: 56px 24px 72px; text-align: center;
-  }
-  .hero .eyebrow {
-    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
-    font-weight: 700; opacity: 0.85; margin-bottom: 12px;
-  }
-  .hero h1 { font-size: 34px; font-weight: 800; line-height: 1.2; max-width: 640px; margin: 0 auto 14px; }
-  .hero p { max-width: 560px; margin: 0 auto; font-size: 15px; line-height: 1.6; opacity: 0.92; }
-  .hero .dates { margin-top: 22px; font-size: 14px; font-weight: 700; }
-
-  .endorse {
-    max-width: 720px; margin: -40px auto 0; background: #fff; border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 20px 28px; display: flex;
-    justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center;
-  }
-  .endorse .col p.label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #888; font-weight: 700; margin-bottom: 6px; }
-
   /* ============================================================
      PHOTO SLOTS — how to add your own pictures
-     Each slot below shows a filename in small grey text, e.g. "photos/hero-1.jpg".
-     1. Make a folder called "photos" in the SAME folder as this HTML file.
-     2. Save your image into that folder using EXACTLY that filename.
-     3. Refresh this page in your browser — the photo appears automatically,
-        replacing the grey placeholder. No editing of this file needed.
+     Anywhere you see a filename printed in small grey monospace text
+     inside a box (e.g. "photos/hero-1.jpg"), that's a photo slot.
+     1. Make a folder called "photos" next to this HTML file.
+     2. Save your image using EXACTLY that filename into that folder.
+     3. Refresh this page — the photo appears automatically, no editing
+        of this file required.
      ============================================================ */
-  .photo-slot { position: relative; overflow: hidden; background: #e8eaf2; border-radius: 10px; }
-  .photo-slot .filename {
-    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 8px; font-family: monospace; font-size: 10px; color: #7d88b3; line-height: 1.5;
+  :root {
+    color-scheme: light;
+    --aibp-red: #4B64AE;   /* was Malaysia orange #EE963A — now Indonesia Blue, per brand guide */
+    --aibp-gold: #C9A84C;  /* unchanged — AIBP-wide secondary accent, not country-specific */
+    --aibp-dark: #3C3838;
   }
-  .photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-
-  .endorse-logo { height: 40px; width: 110px; }
-
-  .section { max-width: 780px; margin: 0 auto; padding: 48px 24px; }
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .stat-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 12px; text-align: center; }
-  .stat-card .num { font-family: 'Crimson Pro', serif; font-size: 30px; font-weight: 800; color: var(--id-blue); }
-  .stat-card .label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
-
-  .segment-label {
-    display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
-    font-weight: 800; color: #fff; background: var(--id-blue); padding: 6px 14px; border-radius: 999px;
-    margin-bottom: 14px;
-  }
-  .intro-box {
-    background: linear-gradient(135deg, rgba(168,165,131,0.12), rgba(75,100,174,0.06));
-    border: 1px solid rgba(168,165,131,0.3); border-radius: 16px; padding: 18px 22px; margin-bottom: 18px;
-    font-size: 14px; line-height: 1.6; color: #444;
-  }
-
-  .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
-  .card .row { display: flex; flex-wrap: wrap; }
-  .card .col { flex: 1; min-width: 220px; padding: 18px; }
-  .card .col + .col { border-left: 1px solid #f0f0f0; }
-  .card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .card p.meta { font-size: 12px; color: #888; margin: 0 0 10px; }
-  .card p.desc { font-size: 13px; line-height: 1.6; color: #555; }
-  .pill-btn {
-    display: block; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase;
-    letter-spacing: 0.04em; padding: 10px; border-radius: 999px; margin-top: 10px; text-decoration: none;
-  }
-  .pill-btn.solid { background: var(--id-blue); color: #fff; }
-  .pill-btn.outline { border: 1.5px solid var(--id-blue); color: var(--id-blue); }
-  .photo-ph { background: #e8eaf2; border-radius: 10px; height: 90px; margin-top: 10px; }
-  .session-photo { height: 110px; margin-top: 10px; }
-  .sponsor-logo-slot { height: 46px; width: 100%; margin-bottom: 6px; }
-
-  .award-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
-  .award-card .cat { font-size: 11px; color: var(--id-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
-  .award-card h4 { margin-top: 6px; font-size: 17px; }
-  .award-card .quote { font-size: 13px; font-style: italic; color: #666; margin-top: 8px; border-left: 3px solid var(--id-blue); padding-left: 10px; }
-
-  .network-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
-  .network-card .top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .network-card .logo-ph { height: 34px; width: 80px; background: #eee; border-radius: 4px; }
-  .network-card a.article { font-size: 12px; color: var(--id-blue); font-weight: 700; text-decoration: none; }
-  .network-card .count { font-size: 12px; color: var(--id-blue); font-weight: 800; white-space: nowrap; }
-
-  .pending { background: repeating-linear-gradient(135deg, #fafafa, #fafafa 10px, #f2f2f2 10px, #f2f2f2 20px); border: 1.5px dashed #ccc; border-radius: 12px; padding: 16px 20px; color: #999; font-size: 13px; text-align: center; margin-bottom: 12px; }
-
-  .speaker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .speaker { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 12px; }
-  .speaker .name { font-size: 13px; font-weight: 700; }
-  .speaker .role { font-size: 11px; color: #777; margin-top: 2px; line-height: 1.4; }
-
-  .sponsor-tier-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--id-blue); margin: 16px 0 8px; }
-  .sponsor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .sponsor-chip { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 10px 12px; font-size: 12px; font-weight: 700; text-align: center; }
-
-  .data-note { font-size: 11px; color: #999; margin: -4px 0 16px; font-style: italic; }
-  .country-bar-row { display: flex; align-items: center; gap: 10px; font-size: 12px; margin-bottom: 6px; }
-  .country-bar-row .name { width: 90px; color: #666; flex-shrink: 0; }
-  .country-bar-row .bar { background: var(--id-blue-light); border-radius: 4px; height: 14px; flex: 1; position: relative; }
-  .country-bar-row .bar span { position: absolute; inset: 0; background: var(--id-blue); border-radius: 4px; }
-  .country-bar-row .n { width: 30px; text-align: right; color: #666; }
-
-  footer { text-align: center; padding: 40px 24px; font-size: 12px; color: #999; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--aibp-dark); background: #fff; }
+  img { max-width: 100%; }
+  .wrap { max-width: 64rem; margin: 0 auto; }
+  .photo-slot { position: relative; overflow: hidden; background: #e5e7eb; }
+  .photo-slot .filename { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 6px; font-family: monospace; font-size: 10px; color: #8b93a8; line-height: 1.5; }
+  .photo-slot img.real { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 </style>
 </head>
 <body>
 
-<div class="banner">Stats, speakers, sponsors and networking sessions below are REAL, pulled from Firebase. Sessions/panels, awards and testimonials are still placeholder — that content doesn't exist anywhere yet. Every grey box below is a photo slot — see the filename printed inside it, and the instructions at the top of the CSS if viewing source.</div>
-
-<div class="hero">
-  <div class="eyebrow">Post-show report</div>
-  <h1>54th AIBP Conference &amp; Exhibition Indonesia</h1>
-  <p>Two days of dialogue, deal-making and discovery bringing together Indonesia's industrial and technology leaders — a look back at the sessions, speakers and moments that made this edition.</p>
-  <div class="dates">26–27 August 2026 · Four Seasons Hotel, Jakarta</div>
+<div style="background:#fef9e7; color:#78350f; text-align:center; font-size:12px; font-weight:700; padding:8px 16px;">
+  Preview mockup — layout, type and spacing copied directly from the live my.aibp.sg/report component code, recoloured to Indonesia Blue. Stats/speakers/sponsors/networking below are real (from your Firebase exports); Sessions, Awards and Testimonials use the site's own real "still being finalised" placeholder since that content doesn't exist yet.
 </div>
 
-<div class="section" style="padding-top:24px; padding-bottom:0;">
-  <div class="sponsor-tier-label" style="margin-top:0;">Hero photos</div>
-  <div style="display:flex; gap:10px;">
-    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-1.jpg</div><img src="photos/hero-1.jpg" alt="" onerror="this.style.display='none'"></div>
-    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-2.jpg</div><img src="photos/hero-2.jpg" alt="" onerror="this.style.display='none'"></div>
-    <div class="photo-slot" style="flex:1; height:120px;"><div class="filename">photos/hero-3.jpg</div><img src="photos/hero-3.jpg" alt="" onerror="this.style.display='none'"></div>
+<!-- ===================== HERO ===================== -->
+<header style="position:relative; overflow:hidden; background:linear-gradient(to bottom right, #1a2450, #37489a, #8fa2d8); color:#fff;">
+  <div style="position:absolute; inset:0; background:rgba(16,20,42,0.7); clip-path:polygon(0 0, 42% 0, 16% 100%, 0% 100%);"></div>
+  <svg style="position:absolute; bottom:0; left:0; width:100%; height:80px; color:rgba(255,255,255,0.1);" viewBox="0 0 400 60" preserveAspectRatio="none" fill="currentColor">
+    <rect x="0" y="20" width="18" height="40"/><rect x="22" y="10" width="14" height="50"/><rect x="40" y="28" width="20" height="32"/>
+    <rect x="64" y="0" width="12" height="60"/><rect x="80" y="18" width="16" height="42"/>
+    <rect x="340" y="22" width="18" height="38"/><rect x="362" y="8" width="14" height="52"/><rect x="380" y="24" width="20" height="36"/>
+  </svg>
+  <div class="wrap" style="position:relative; z-index:10; padding:56px 20px 80px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:56px;">
+      <img src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=300w" alt="AIBP" style="height:32px; object-fit:contain; filter:brightness(0) invert(1);">
+      <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:4px 14px; font-weight:700;">Post-Conference Report</span>
+    </div>
+    <h1 style="font-size:44px; font-weight:800; line-height:1.15; max-width:640px; margin:0 0 16px; letter-spacing:-0.01em;">54th AIBP Conference &amp; Exhibition Indonesia</h1>
+    <p style="font-size:15px; color:rgba(255,255,255,0.8); font-weight:600; margin:0;">26 – 27 August 2026 · Four Seasons Hotel, Jakarta</p>
+    <!-- Theme tagline / hero description intentionally left out — that copy doesn't exist anywhere yet (same gap as Awards/Sessions below). Add here once written. -->
+  </div>
+</header>
+
+<!-- ===================== ENDORSEMENTS ===================== -->
+<div class="wrap" style="position:relative; z-index:10; padding:0 20px; margin-top:-40px;">
+  <div style="background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.08); border:1px solid #f3f4f6; padding:28px 32px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px;">
+    <div>
+      <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:#9ca3af; font-weight:700; margin:0 0 12px;">Endorsed By</p>
+      <div class="photo-slot" style="height:48px; width:140px; border-radius:6px;"><div class="filename">photos/endorsed-by.png</div><img class="real" src="photos/endorsed-by.png" alt="" onerror="this.style.display='none'"></div>
+    </div>
+    <div>
+      <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:#9ca3af; font-weight:700; margin:0 0 12px;">Supported By</p>
+      <div class="photo-slot" style="height:48px; width:140px; border-radius:6px;"><div class="filename">photos/supported-by.png</div><img class="real" src="photos/supported-by.png" alt="" onerror="this.style.display='none'"></div>
+    </div>
+    <div>
+      <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:#9ca3af; font-weight:700; margin:0 0 12px;">Pavilion Host</p>
+      <div class="photo-slot" style="height:48px; width:140px; border-radius:6px;"><div class="filename">photos/pavilion-host.png</div><img class="real" src="photos/pavilion-host.png" alt="" onerror="this.style.display='none'"></div>
+    </div>
   </div>
 </div>
 
-<div class="endorse">
-  <div class="col"><p class="label">Endorsed by</p><div class="photo-slot endorse-logo"><div class="filename">photos/endorsed-by.png</div><img src="photos/endorsed-by.png" alt="" onerror="this.style.display='none'"></div></div>
-  <div class="col"><p class="label">Supported by</p><div class="photo-slot endorse-logo"><div class="filename">photos/supported-by.png</div><img src="photos/supported-by.png" alt="" onerror="this.style.display='none'"></div></div>
-  <div class="col"><p class="label">Pavilion host</p><div class="photo-slot endorse-logo"><div class="filename">photos/pavilion-host.png</div><img src="photos/pavilion-host.png" alt="" onerror="this.style.display='none'"></div></div>
-</div>
-
-<div class="section">
-  <div class="segment-label">By the numbers — real, from Firebase</div>
-  <div class="stats">
-    <div class="stat-card"><div class="num">599</div><div class="label">Registered</div></div>
-    <div class="stat-card"><div class="num">286</div><div class="label">Checked in Day 1</div></div>
-    <div class="stat-card"><div class="num">328</div><div class="label">Companies</div></div>
-    <div class="stat-card"><div class="num">32</div><div class="label">Speakers</div></div>
+<!-- ===================== HERO PHOTOS ===================== -->
+<div class="wrap" style="padding:20px 20px; border-bottom:1px solid #f3f4f6;">
+  <div style="display:flex; gap:8px; overflow-x:auto;">
+    <div class="photo-slot" style="height:160px; width:224px; flex-shrink:0; border-radius:12px;"><div class="filename">photos/hero-1.jpg</div><img class="real" src="photos/hero-1.jpg" alt="" onerror="this.style.display='none'"></div>
+    <div class="photo-slot" style="height:160px; width:224px; flex-shrink:0; border-radius:12px;"><div class="filename">photos/hero-2.jpg</div><img class="real" src="photos/hero-2.jpg" alt="" onerror="this.style.display='none'"></div>
+    <div class="photo-slot" style="height:160px; width:224px; flex-shrink:0; border-radius:12px;"><div class="filename">photos/hero-3.jpg</div><img class="real" src="photos/hero-3.jpg" alt="" onerror="this.style.display='none'"></div>
   </div>
-  <p class="data-note">Day 2 check-in shows only 1 record in the export — looks like a sync gap, not a real number. Worth checking the source before this goes live.</p>
-
-  <div class="sponsor-tier-label">By country</div>
-  <div class="country-bar-row"><div class="name">Indonesia</div><div class="bar"><span style="width:100%"></span></div><div class="n">445</div></div>
-  <div class="country-bar-row"><div class="name">Singapore</div><div class="bar"><span style="width:8.5%"></span></div><div class="n">38</div></div>
-  <div class="country-bar-row"><div class="name">Thailand</div><div class="bar"><span style="width:0.5%"></span></div><div class="n">2</div></div>
-  <div class="country-bar-row"><div class="name">Malaysia</div><div class="bar"><span style="width:0.2%"></span></div><div class="n">1</div></div>
 </div>
 
-<div class="section">
-  <div class="segment-label">Speakers — real roster (32)</div>
-  <p class="data-note">Not yet mapped to individual sessions — that mapping lives in the agenda sheet, not Firebase. Showing the full confirmed roster instead.</p>
-  <div class="speaker-grid">
-    <div class="speaker"><div class="name">Willis Lim</div><div class="role">Executive Director, CyberSG TIG Collaboration Centre</div></div>
-    <div class="speaker"><div class="name">Arief Noorman</div><div class="role">Head of Cyber Risk &amp; DPO, Allo Bank</div></div>
-    <div class="speaker"><div class="name">Risman Adnan</div><div class="role">CTO, ParagonCorp</div></div>
-    <div class="speaker"><div class="name">Ni Made Sunarti</div><div class="role">SVP Data Management, CIMB Niaga</div></div>
-    <div class="speaker"><div class="name">Norman Sasono</div><div class="role">CTO, DANA</div></div>
-    <div class="speaker"><div class="name">Anggia Agrimiradj</div><div class="role">VP Digital Wholesale Strategy, BRI</div></div>
-    <div class="speaker"><div class="name">Herman Cahyadi</div><div class="role">Head of People, GoTo/Gojek</div></div>
-    <div class="speaker"><div class="name">Arief Ristanto</div><div class="role">Cybersecurity Head, Astra International</div></div>
-    <div class="speaker"><div class="name">Bondan Widiawan</div><div class="role">Deputy for Cybersecurity, BSSN</div></div>
+<!-- ===================== SECTION NAV ===================== -->
+<div style="position:sticky; top:0; z-index:40; background:rgba(255,255,255,0.95); backdrop-filter:blur(4px); border-bottom:1px solid #f3f4f6;">
+  <div class="wrap" style="display:flex; gap:6px; overflow-x:auto; padding:10px 20px;">
+    <a href="#numbers" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:var(--aibp-red); color:#fff; text-decoration:none;">Overview</a>
+    <a href="#speakers" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Speakers</a>
+    <a href="#awards" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Awards</a>
+    <a href="#day-1" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Day 1</a>
+    <a href="#day-2" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Day 2</a>
+    <a href="#networking" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Networking</a>
+    <a href="#participants" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Participants</a>
+    <a href="#sponsors" style="flex-shrink:0; padding:6px 12px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; background:#f3f4f6; color:#6b7280; text-decoration:none;">Sponsors</a>
   </div>
-  <p class="data-note" style="text-align:center; margin-top:10px;">+ 23 more in the full roster</p>
 </div>
 
-<div class="section">
-  <div class="segment-label">Day 1 &amp; 2 — Sessions</div>
-  <div class="pending">Session titles, descriptions, moderators and panelists live in the ID_Agenda Google Sheet, not Firebase — not pulled in yet. Placeholder below shows the intended shape.</div>
-  <div class="card" style="opacity:0.5">
-    <div class="row">
-      <div class="col">
-        <p class="meta">Panel discussion — placeholder</p>
-        <h4>Session title goes here</h4>
-        <p class="desc">Description pending from ID_Agenda.</p>
+<!-- ===================== SECTION BANNER (reused pattern) ===================== -->
+<!-- Real gradient bar style from SectionBanner(): logo chip left, title centred, date/venue right -->
+
+<!-- ===================== OVERVIEW / STATS — real ===================== -->
+<section id="numbers" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="position:relative; z-index:10; padding:22px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <div style="background:#fff; border-radius:8px; padding:6px 10px;"><img src="https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=300w" alt="AIBP" style="height:18px; object-fit:contain;"></div>
+      <div style="text-align:center; flex:1;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Participants Overview</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">By the numbers</p></div>
+      <div style="text-align:right; flex-shrink:0;"><p style="color:#fff; font-weight:700; font-size:13px; margin:0;">26–27 August 2026</p><p style="color:rgba(255,255,255,0.7); font-size:11px; margin:0;">Four Seasons Hotel, Jakarta</p></div>
+    </div>
+  </div>
+  <div style="position:relative; overflow:hidden; background:#111827;">
+    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.6), rgba(0,0,0,0.8));"></div>
+    <div class="wrap" style="position:relative; z-index:10; padding:48px 20px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:48px;">
+        <div style="text-align:center;"><div style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:20px;">👥</div><p style="color:#fff; font-size:32px; font-weight:800; margin:0;">599</p><p style="color:rgba(255,255,255,0.7); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin:4px 0 0;">Registered</p></div>
+        <div style="text-align:center;"><div style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:20px;">🏢</div><p style="color:#fff; font-size:32px; font-weight:800; margin:0;">328</p><p style="color:rgba(255,255,255,0.7); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin:4px 0 0;">Companies</p></div>
+        <div style="text-align:center;"><div style="width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:20px;">🇮🇩</div><p style="color:#fff; font-size:32px; font-weight:800; margin:0;">74%</p><p style="color:rgba(255,255,255,0.7); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; font-weight:700; margin:4px 0 0;">From Indonesia</p></div>
       </div>
-      <div class="col">
-        <p class="meta">Moderator / Panelists</p>
-        <p class="desc">Pending — will likely draw from the 32-name speaker roster above once sessions are mapped.</p>
-        <div class="photo-slot session-photo"><div class="filename">photos/day1-session-1.jpg</div><img src="photos/day1-session-1.jpg" alt="" onerror="this.style.display='none'"></div>
+      <p style="color:rgba(255,255,255,0.9); font-size:11px; font-style:italic; margin:-32px 0 24px; text-align:center;">Day 1 check-in: 286 of 599. Day 2 check-in export shows just 1 record — looks like a sync gap, worth verifying before publishing.</p>
+      <div>
+        <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.6); font-weight:700; margin:0 0 16px;">By Country</p>
+        <div style="display:grid; grid-template-columns:7rem 1fr; gap:10px 12px; align-items:center;">
+          <span style="color:rgba(255,255,255,0.8); font-size:12px; text-align:right; font-style:italic;">Indonesia</span>
+          <div style="position:relative; height:20px; background:rgba(255,255,255,0.1); border-radius:3px;"><div style="position:absolute; inset-y:0; left:0; width:93%; background:#fff; border-radius:3px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;"><span style="font-size:10px; font-weight:700; color:#111827;">74%</span></div></div>
+          <span style="color:rgba(255,255,255,0.8); font-size:12px; text-align:right; font-style:italic;">Singapore</span>
+          <div style="position:relative; height:20px; background:rgba(255,255,255,0.1); border-radius:3px;"><div style="position:absolute; inset-y:0; left:0; width:12%; background:#fff; border-radius:3px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;"><span style="font-size:10px; font-weight:700; color:#111827;">6%</span></div></div>
+          <span style="color:rgba(255,255,255,0.8); font-size:12px; text-align:right; font-style:italic;">Thailand</span>
+          <div style="position:relative; height:20px; background:rgba(255,255,255,0.1); border-radius:3px;"><div style="position:absolute; inset-y:0; left:0; width:8%; background:#fff; border-radius:3px; display:flex; align-items:center; justify-content:flex-end; padding-right:6px;"><span style="font-size:10px; font-weight:700; color:#111827;">0.3%</span></div></div>
+        </div>
       </div>
     </div>
   </div>
-  <p class="data-note">One example photo slot shown above — once sessions are real, each will get its own numbered slot (day1-session-2.jpg, day2-session-1.jpg, etc).</p>
-</div>
+</section>
 
-<div class="section">
-  <div class="segment-label">Awards</div>
-  <div class="pending">Award categories, winners, judges and quotes aren't in Firebase or any sheet yet — this is entirely new editorial content, same as it was for Malaysia.</div>
-</div>
+<!-- ===================== SPEAKERS — real (32), added section, styled to match ===================== -->
+<section id="speakers" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Confirmed Speakers</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">32 industry leaders</p></div>
+  </div>
+  <div class="wrap" style="padding:40px 20px; background:#fff;">
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Willis Lim</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Executive Director, CyberSG TIG Collaboration Centre</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Arief Noorman</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Head of Cyber Risk &amp; DPO, Allo Bank</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Risman Adnan</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">CTO, ParagonCorp</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Chairul Saleh</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Director of Manpower Productivity, Coord. Ministry for Economic Affairs</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Ni Made Sunarti</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">SVP Data Management, CIMB Niaga</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Norman Sasono</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">CTO, DANA</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Anggia Agrimiradj</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">VP Digital Wholesale Strategy, BRI</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Herman Cahyadi</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Head of People, GoTo / Gojek</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Arief Ristanto</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Cybersecurity Head, Astra International</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Bondan Widiawan</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Deputy for Cybersecurity, BSSN</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Ignatius Sigit Pratopo</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">SVP Pertamina Digital Hub, Pertamina</p></div>
+      <div style="border:1px solid #f3f4f6; border-radius:12px; padding:14px;"><p style="font-weight:700; font-size:13px; margin:0;">Handika Hakim</p><p style="font-size:11px; color:#9ca3af; margin:4px 0 0;">Head of AI &amp; Data Analytics, BNI</p></div>
+    </div>
+    <p style="text-align:center; font-size:12px; color:#9ca3af; font-style:italic; margin-top:16px;">+ 20 more confirmed speakers in the full roster · not yet mapped to individual sessions — that mapping lives in the ID_Agenda sheet, not Firebase</p>
+  </div>
+</section>
 
-<div class="section">
-  <div class="segment-label">Networking sessions — real (5)</div>
-  <p class="data-note">Titles and attendance counts are real, pulled directly from Firebase. Descriptions/summaries still need writing.</p>
+<!-- ===================== AWARDS — real "coming soon" placeholder, exact site pattern ===================== -->
+<section id="awards" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Award Winners</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">Recognition</p></div>
+  </div>
+  <div style="padding:64px 20px; text-align:center; background:#fff;"><p style="font-size:13px; color:#9ca3af; margin:0;">Award winners are still being finalised — check back soon.</p></div>
+</section>
 
-  <div class="network-card">
-    <div class="top">
-      <div><h4>Roundtable: Strategic AI &amp; IT Investments — Driving Business Resilience</h4><p class="meta">26 August, 10:45–11:45</p></div>
-      <span class="count">13 attended</span>
+<!-- ===================== DAY 1 / DAY 2 — real "coming soon" placeholder ===================== -->
+<section id="day-1" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Day 1</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">26 August 2026</p></div>
+  </div>
+  <div style="padding:64px 20px; text-align:center; background:#f9fafb;"><p style="font-size:13px; color:#9ca3af; margin:0;">Session titles, descriptions, moderators and panelists live in the ID_Agenda Google Sheet, not Firebase — not pulled in yet.</p></div>
+</section>
+<section id="day-2" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Day 2</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">27 August 2026</p></div>
+  </div>
+  <div style="padding:64px 20px; text-align:center; background:#fff;"><p style="font-size:13px; color:#9ca3af; margin:0;">Same as Day 1 — pending the agenda sheet.</p></div>
+</section>
+
+<!-- ===================== NETWORKING — real (5 sessions) ===================== -->
+<section id="networking" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Curated Meetings &amp; Introductions</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">Networking &amp; private sessions</p></div>
+  </div>
+  <div class="wrap" style="padding:40px 20px; background:#f9fafb;">
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px;">
+      <div style="background:#fff; border:1px solid #f3f4f6; border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+        <p style="font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--aibp-red); font-weight:700; margin:0 0 4px;">Roundtable</p>
+        <h3 style="font-size:16px; font-weight:700; margin:0 0 8px;">Strategic AI &amp; IT Investments — Driving Business Resilience</h3>
+        <p style="font-size:11px; color:#9ca3af; margin:0 0 8px;">26 August, 10:45–11:45</p>
+        <p style="font-size:11px; color:#9ca3af; margin:0;">13 participants — PT Pefindo Biro Kredit IdScore, CIMB Niaga, PT Pertamina (Persero), PT PLN and more</p>
+      </div>
+      <div style="background:#fff; border:1px solid #f3f4f6; border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+        <p style="font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--aibp-red); font-weight:700; margin:0 0 4px;">Private Lunch</p>
+        <h3 style="font-size:16px; font-weight:700; margin:0 0 8px;">AI for Cybersecurity — Fighting AI with AI</h3>
+        <p style="font-size:11px; color:#9ca3af; margin:0 0 8px;">26 August, 13:00–14:00</p>
+        <p style="font-size:11px; color:#9ca3af; margin:0;">16 participants — APP Group, PT PLN (Persero), Golden Energy Mines, PT Telkom Indonesia and more</p>
+      </div>
+      <div style="background:#fff; border:1px solid #f3f4f6; border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+        <p style="font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--aibp-red); font-weight:700; margin:0 0 4px;">Workshop</p>
+        <h3 style="font-size:16px; font-weight:700; margin:0 0 8px;">Private Networking Reception for AI &amp; Cyber Leaders</h3>
+        <p style="font-size:11px; color:#9ca3af; margin:0 0 8px;">26 August, 15:25–16:25</p>
+        <p style="font-size:11px; color:#9ca3af; margin:0;">17 participants — Prudential Life Assurance Indonesia, Seabank, Bank Syariah Indonesia and more</p>
+      </div>
+      <div style="background:#fff; border:1px solid #f3f4f6; border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04); opacity:0.6;">
+        <p style="font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--aibp-red); font-weight:700; margin:0 0 4px;">Workshop</p>
+        <h3 style="font-size:16px; font-weight:700; margin:0 0 8px;">Securing the Backbone — Cyber Resilience for Critical Infrastructure</h3>
+        <p style="font-size:11px; color:#9ca3af; margin:0 0 8px;">27 August, 10:30–11:30</p>
+        <p style="font-size:11px; color:#c66; margin:0;">0 attendance recorded — same Day 2 sync gap as the stats above, not necessarily accurate</p>
+      </div>
+      <div style="background:#fff; border:1px solid #f3f4f6; border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04); opacity:0.6;">
+        <p style="font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--aibp-red); font-weight:700; margin:0 0 4px;">Lunch Workshop</p>
+        <h3 style="font-size:16px; font-weight:700; margin:0 0 8px;">AI Guardrails for Enterprise — Protecting Data While Enabling Innovation</h3>
+        <p style="font-size:11px; color:#9ca3af; margin:0 0 8px;">27 August, 12:35–14:00</p>
+        <p style="font-size:11px; color:#c66; margin:0;">0 attendance recorded — same Day 2 sync gap as the stats above, not necessarily accurate</p>
+      </div>
     </div>
   </div>
-  <div class="network-card">
-    <div class="top">
-      <div><h4>Private Lunch: AI for Cybersecurity — Fighting AI with AI</h4><p class="meta">26 August, 13:00–14:00</p></div>
-      <span class="count">16 attended</span>
-    </div>
-  </div>
-  <div class="network-card">
-    <div class="top">
-      <div><h4>Workshop / Private Networking Reception for AI &amp; Cyber Leaders</h4><p class="meta">26 August, 15:25–16:25</p></div>
-      <span class="count">17 attended</span>
-    </div>
-  </div>
-  <div class="network-card">
-    <div class="top">
-      <div><h4>Workshop: Securing the Backbone — Cyber Resilience for Critical Infrastructure</h4><p class="meta">27 August, 10:30–11:30</p></div>
-      <span class="count" style="color:#c66">0 attended*</span>
-    </div>
-  </div>
-  <div class="network-card">
-    <div class="top">
-      <div><h4>Lunch Workshop: AI Guardrails for Enterprise — Protecting Data While Enabling Innovation</h4><p class="meta">27 August, 12:35–14:00</p></div>
-      <span class="count" style="color:#c66">0 attended*</span>
-    </div>
-  </div>
-  <p class="data-note">* Both 0-attendance sessions are on Day 2, same day the check-in numbers above look incomplete — probably the same sync gap, not sessions nobody attended.</p>
-</div>
+</section>
 
-<div class="section">
-  <div class="segment-label">Sponsors — real (17)</div>
-  <p class="data-note">Top-tier sponsors get a logo slot; exhibitors are name-only, matching how the Malaysia report treats tiers.</p>
+<!-- ===================== PARTICIPANTS — real "coming soon" placeholder ===================== -->
+<section id="participants" style="border-bottom:1px solid #f3f4f6;">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Participants</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">Who was in the room</p></div>
+  </div>
+  <div style="padding:64px 20px; text-align:center; background:#fff;"><p style="font-size:13px; color:#9ca3af; margin:0;">599 real attendee records exist in Firebase but aren't wired into a searchable directory yet — same feature as the Malaysia report's Participants tab.</p></div>
+</section>
 
-  <div class="sponsor-tier-label">Platinum</div>
-  <div class="sponsor-grid">
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-tricentis.png</div><img src="photos/sponsor-tricentis.png" alt="" onerror="this.style.display='none'"></div>Tricentis</div>
+<!-- ===================== SPONSORS — real (17), exact tier-grid style ===================== -->
+<section id="sponsors">
+  <div style="position:relative; overflow:hidden; background:linear-gradient(to right, #131a3a, #2e3d80, #4B64AE);">
+    <div class="wrap" style="padding:22px 20px; text-align:center;"><h2 style="color:#fff; font-weight:800; font-size:20px; margin:0;">Partners &amp; Sponsors</h2><p style="color:rgba(255,255,255,0.7); font-size:12px; margin:2px 0 0;">With thanks to</p></div>
   </div>
-  <div class="sponsor-tier-label">Gold</div>
-  <div class="sponsor-grid">
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-concentric-ai.png</div><img src="photos/sponsor-concentric-ai.png" alt="" onerror="this.style.display='none'"></div>Concentric AI</div>
-  </div>
-  <div class="sponsor-tier-label">Silver</div>
-  <div class="sponsor-grid">
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-veeam.png</div><img src="photos/sponsor-veeam.png" alt="" onerror="this.style.display='none'"></div>Veeam Software</div>
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-kong.png</div><img src="photos/sponsor-kong.png" alt="" onerror="this.style.display='none'"></div>Kong</div>
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-workato.png</div><img src="photos/sponsor-workato.png" alt="" onerror="this.style.display='none'"></div>Workato</div>
-  </div>
-  <div class="sponsor-tier-label">AI Security Partner</div>
-  <div class="sponsor-grid">
-    <div class="sponsor-chip"><div class="photo-slot sponsor-logo-slot"><div class="filename">photos/sponsor-terminal3.png</div><img src="photos/sponsor-terminal3.png" alt="" onerror="this.style.display='none'"></div>TERMINAL 3</div>
-  </div>
-  <div class="sponsor-tier-label">Exhibitors</div>
-  <div class="sponsor-grid">
-    <div class="sponsor-chip">E-CQurity</div>
-    <div class="sponsor-chip">SoftScheck Singapore</div>
-    <div class="sponsor-chip">Netrust</div>
-    <div class="sponsor-chip">Spentera</div>
-    <div class="sponsor-chip">ThreatBook</div>
-    <div class="sponsor-chip">Gaincontrol</div>
-    <div class="sponsor-chip">Digify</div>
-    <div class="sponsor-chip">Blackscore</div>
-    <div class="sponsor-chip">CyberKnights</div>
-    <div class="sponsor-chip">Zeroport</div>
-    <div class="sponsor-chip">AxisNow</div>
-  </div>
-  <p class="data-note" style="margin-top:12px;">Logos aren't in Firebase (all blank) — that's the "images later" part you mentioned.</p>
-</div>
+  <div class="wrap" style="padding:48px 20px; text-align:center; background:#f9fafb;">
 
-<footer>AIBP Conference &amp; Exhibition Indonesia — real stats/speakers/sponsors/networking, placeholder sessions/awards, no photos yet</footer>
+    <p style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin:0 0 20px; color:#8E9AAF;">Platinum Sponsor</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-bottom:40px;">
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;">
+        <div class="filename">photos/sponsor-tricentis.png</div><img class="real" src="photos/sponsor-tricentis.png" alt="" onerror="this.style.display='none'">
+        <span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700; padding:0 4px; background:transparent;">Tricentis</span>
+      </div>
+    </div>
+
+    <p style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin:0 0 20px; color:#D4AF37;">Gold Sponsor</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-bottom:40px;">
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;">
+        <div class="filename">photos/sponsor-concentric-ai.png</div><img class="real" src="photos/sponsor-concentric-ai.png" alt="" onerror="this.style.display='none'">
+        <span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700; padding:0 4px;">Concentric AI</span>
+      </div>
+    </div>
+
+    <p style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin:0 0 20px; color:#9DA1A3;">Silver Sponsors</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-bottom:40px;">
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;"><div class="filename">photos/sponsor-veeam.png</div><img class="real" src="photos/sponsor-veeam.png" alt="" onerror="this.style.display='none'"><span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700;">Veeam Software</span></div>
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;"><div class="filename">photos/sponsor-kong.png</div><img class="real" src="photos/sponsor-kong.png" alt="" onerror="this.style.display='none'"><span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700;">Kong</span></div>
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;"><div class="filename">photos/sponsor-workato.png</div><img class="real" src="photos/sponsor-workato.png" alt="" onerror="this.style.display='none'"><span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700;">Workato</span></div>
+    </div>
+
+    <p style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin:0 0 20px; color:#C17F3E;">AI Security Partner</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-bottom:40px;">
+      <div class="photo-slot" style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:140px;"><div class="filename">photos/sponsor-terminal3.png</div><img class="real" src="photos/sponsor-terminal3.png" alt="" onerror="this.style.display='none'"><span style="position:relative; z-index:1; font-size:12px; color:#9ca3af; font-weight:700;">TERMINAL 3</span></div>
+    </div>
+
+    <p style="font-size:18px; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; margin:0 0 20px; color:#555;">Exhibitors</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">E-CQurity</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">SoftScheck Singapore</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Netrust</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Spentera</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">ThreatBook</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Gaincontrol</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Digify</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Blackscore</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">CyberKnights</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">Zeroport</span></div>
+      <div style="display:flex; align-items:center; justify-content:center; background:#fafafa; border:1px solid #e5e7eb; border-radius:8px; width:220px; height:110px;"><span style="font-size:12px; color:#9ca3af; font-weight:700; text-align:center; padding:0 8px;">AxisNow</span></div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding:40px 20px; text-align:center; border-top:1px solid #f3f4f6; background:#111827;">
+  <p style="font-size:12px; color:#9ca3af; line-height:1.6; max-width:420px; margin:0 auto;">AIBP serves as an avenue for public and private organisations in Southeast Asia to access and exchange information about growth and innovation within the B2B space.</p>
+  <p style="font-size:12px; color:#6b7280; margin-top:12px;">aibp@industry-platform.com · www.aibp.sg</p>
+</footer>
 
 </body>
 </html>
