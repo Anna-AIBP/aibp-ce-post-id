@@ -278,7 +278,7 @@ function SectionNav({ items }: { items: { id: string; label: string }[] }) {
 // right (hidden on small screens to keep the bar from wrapping).
 function SectionBanner({ title, subtitle, meta }: { title: string; subtitle?: string; meta: ReportMeta }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-[#241c17] via-[#6b4a24] to-[#c9822f]">
+    <div className="relative overflow-hidden bg-gradient-to-r from-[#1C2340] via-[#33488C] to-[#4B64AE]">
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{ backgroundImage: 'linear-gradient(115deg, transparent 46%, rgba(255,255,255,0.5) 50%, transparent 54%)' }}
@@ -897,10 +897,10 @@ export default function ReportPage() {
       <ScrollProgressBar />
 
       {/* Cover — dark diagonal wedge + gradient, echoing the PDF's cover page */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-[#3a2c1f] via-[#7a4f22] to-[#dba143] text-white safe-top">
+      <header className="relative overflow-hidden bg-gradient-to-br from-[#1C2340] via-[#33488C] to-[#4B64AE] text-white safe-top">
         {/* diagonal dark wedge, bottom-left, like the cover's cityscape overlay */}
         <div
-          className="absolute inset-0 bg-[#1a1310]/70 pointer-events-none"
+          className="absolute inset-0 bg-[#1C2340]/70 pointer-events-none"
           style={{ clipPath: 'polygon(0 0, 42% 0, 16% 100%, 0% 100%)' }}
         />
         {/* faint gold skyline silhouette along the bottom */}
@@ -1086,7 +1086,7 @@ export default function ReportPage() {
                 {awards.items.map((a) => (
                   <Reveal key={a.category}>
                     <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white h-full flex flex-col">
-                      <div className="bg-gradient-to-r from-[#2b2420] to-[#c9822f] px-5 py-4">
+                      <div className="bg-gradient-to-r from-[#1C2340] to-[#4B64AE] px-5 py-4">
                         <p className="text-white/70 text-[10px] uppercase tracking-wide font-bold mb-0.5">{a.category}</p>
                         <h3 className="text-white text-xl font-extrabold">{a.winnerCompany}</h3>
                       </div>
@@ -1264,7 +1264,7 @@ export default function ReportPage() {
                       <Reveal key={s.id}>
                         {s.segmentLabel && <SegmentHeader label={s.segmentLabel} intro={s.segmentIntro} />}
                         <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
-                          <div className="bg-gradient-to-br from-orange-50 to-white p-5">
+                          <div className="bg-gradient-to-br from-[#F1F3F9] to-white p-5">
                             <h3 className="text-lg font-bold text-gray-900 leading-snug">{p.title}</h3>
                           </div>
                           <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-gray-100 border-t border-gray-100">
@@ -1284,7 +1284,7 @@ export default function ReportPage() {
                     <Reveal key={s.id}>
                       {s.segmentLabel && <SegmentHeader label={s.segmentLabel} intro={s.segmentIntro} />}
                       <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
-                        <div className="bg-gradient-to-br from-orange-50 to-white p-5">
+                        <div className="bg-gradient-to-br from-[#F1F3F9] to-white p-5">
                           <h3 className="text-lg font-bold text-gray-900 leading-snug">Presentations</h3>
                         </div>
                         {/* Cards are a fixed size (a third of the row, like a
