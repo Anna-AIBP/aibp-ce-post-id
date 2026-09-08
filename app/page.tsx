@@ -6,16 +6,41 @@ import type { Sponsor } from '@/lib/types'
 const AIBP_LOGO =
   'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/34cc06e3-f859-40f8-8c01-f758906ce1c9/AIBP+by+Industry+Platform+%28High+Res%29.png?format=300w'
 
-// Endorsement/support/pavilion-host logo strip — pulled straight from the
-// public event page (aibp.sg/conference-exhibition-indonesia) when that's
-// live, same set as shown there. Static per-event branding, not
-// sheet-driven — deliberately left empty for now since no Indonesia
-// endorsement/support-body logos have been confirmed yet. Fill this in the
-// same shape as the Malaysia version once confirmed (each entry: a label
-// like "Endorsed By" / "Supported By" / "Pavilion Host", plus a list of
-// { name, url } logos) — the section under the hero simply doesn't render
-// anything while this stays empty.
-const HERO_ENDORSEMENTS: { label: string; logos: { name: string; url: string }[] }[] = []
+// Endorsement/support/media-partner logo strip — pulled straight from the
+// public event page (aibp.sg/conference-exhibition-indonesia), same set as
+// shown there. Static per-event branding, not sheet-driven.
+const HERO_ENDORSEMENTS: { label: string; logos: { name: string; url: string }[] }[] = [
+  {
+    label: 'Endorsed By',
+    logos: [
+      { name: 'Ekuin', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/6c553e31-83c7-4681-b45e-0ad51c4c74e5/Endorsed+By.png?content-type=image%2Fpng' },
+      { name: 'Komdigi', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/bf160246-9740-4d75-8c42-f9c302e5003f/LOGO+KOMDIGI-VERTICAL+2.png?format=500w' },
+    ],
+  },
+  {
+    label: 'Supporting Partners',
+    logos: [
+      { name: 'APDI', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/3be4e1d4-807e-4882-b7eb-d5b315a9b8f2/APDI.png?content-type=image%2Fpng' },
+      { name: 'BSSN', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/e36f1994-b82f-4b71-95bb-977e08042ad4/Seal_of_the_National_Cyber_and_Crypto_Agency_of_the_Republic_Indonesia_%282020_Indonesian_version%29.png?format=500w' },
+      { name: 'BritCham', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/00a2fdd2-9e7d-4195-8e3c-7faeac6c4305/BritCham.png?content-type=image%2Fpng' },
+      { name: 'CSA Singapore', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/514ac039-b4aa-4a32-8858-49bd4736d487/CSA+International+logo_full+colour_transparent_bg_RGB.png?format=500w' },
+      { name: 'Fintech ID', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/d4d77a70-23cd-4ab3-97ab-d8c01ba1ba7d/LOGO-FINTECH.png?content-type=image%2Fpng' },
+      { name: 'ICCC', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/a7119ddc-c6db-4c70-97f0-b97b7ce54cc4/ICCC.png?content-type=image%2Fpng' },
+      { name: 'IDCEC', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/4e4ceee4-3f71-4341-ba95-02709bcb6cc7/Logo+IDCEC+%28high-res%29.png?content-type=image%2Fpng' },
+      { name: 'INDOGEN', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/ff886df1-3930-4ea8-bd51-9dd593defd23/INDOGEN.png?content-type=image%2Fpng' },
+      { name: 'NUS', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/5c92d540-3894-49f8-8794-48edcbb0a034/nus-logo.png?format=500w' },
+      { name: 'OJK', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/46079cdc-5af6-43f3-8963-25f8823e842c/OJK_Logo.png?format=500w' },
+      { name: 'PBCI', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/37444085-5e9d-4a8b-b5d7-bbdf18347d25/PBCI.png?content-type=image%2Fpng' },
+    ],
+  },
+  {
+    label: 'Supporting Media Partners',
+    logos: [
+      { name: 'Medcom', url: 'https://images.squarespace-cdn.com/content/6316ec4bc3127239ee7b0786/b1ba325c-cc20-4ea5-a2c6-2614ecdab982/Logo+Medcom+Muda+Memberi+Arti+%281%29.png?content-type=image%2Fpng' },
+      { name: 'Tempo', url: 'https://images.squarespace-cdn.com/content/v1/6316ec4bc3127239ee7b0786/32e4e5c9-7612-4d0e-83d5-969b887d1ec0/tempo.png?format=500w' },
+    ],
+  },
+]
 
 type ReportMeta = {
   eventName: string
@@ -963,10 +988,9 @@ export default function ReportPage() {
         </div>
       </header>
 
-      {/* Endorsed By / Supported By / Pavilion Host — white card floating just
-          below the gold gradient hero, same layout as the public event page.
-          Renders nothing at all while HERO_ENDORSEMENTS is empty (see the
-          comment on that constant above) rather than showing an empty card. */}
+      {/* Endorsed By / Supporting Partners / Supporting Media Partners — white
+          card floating just below the blue gradient hero, same layout as the
+          public event page. */}
       {HERO_ENDORSEMENTS.length > 0 && (
         <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-10 -mt-8 sm:-mt-10">
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 sm:px-10 py-6 sm:py-8">
