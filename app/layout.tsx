@@ -2,11 +2,33 @@ import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import './globals.css'
 
+// Same official event logo used as the link-preview image on the public
+// aibp.sg event page (aibp.sg/conference-exhibition-indonesia) — reused here
+// so a link to this report shows the Indonesia C&E logo when shared in
+// Slack/WhatsApp/LinkedIn/etc, instead of a blank/generic preview.
+const OG_IMAGE_URL =
+  'https://static1.squarespace.com/static/6316ec4bc3127239ee7b0786/t/69ce07b0e259ea539d4f37f8/1750838046999/AIBP+Conference+%26+Exhibition+Logos+-+Indonesia.png?format=1500w'
+
 export const metadata: Metadata = {
   title: 'AIBP C&E Indonesia 2026 — Post-Event Report',
   description: 'Post-event report for AIBP Conference & Exhibition Indonesia 2026',
+  openGraph: {
+    title: 'AIBP C&E Indonesia 2026 — Post-Event Report',
+    description: 'Post-event report for AIBP Conference & Exhibition Indonesia 2026',
+    url: 'https://id.aibp.sg',
+    siteName: 'AIBP',
+    images: [{ url: OG_IMAGE_URL, width: 1500, height: 785 }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AIBP C&E Indonesia 2026 — Post-Event Report',
+    description: 'Post-event report for AIBP Conference & Exhibition Indonesia 2026',
+    images: [OG_IMAGE_URL],
+  },
   // Unlisted/unlinked distribution (shared directly via URL) — keep the whole
-  // site out of search engines.
+  // site out of search engines. (Doesn't affect link-preview cards above —
+  // those are read directly by the sharing platform, not via search index.)
   robots: {
     index: false,
     follow: false,
