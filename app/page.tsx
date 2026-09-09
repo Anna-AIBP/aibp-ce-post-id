@@ -1272,10 +1272,16 @@ export default function ReportPage() {
                         {p.logos.length > 0 && (
                           <div className="p-5 border-t border-gray-100">
                             <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mb-3">Featuring</p>
-                            <div className="flex flex-wrap items-center gap-6">
+                            {/* Fixed-size box per logo (not just a fixed height) so a
+                                squarish badge/seal (lots of built-in padding) scales up
+                                to fill the box the same way a wide wordmark does,
+                                instead of reading much smaller at the same height. */}
+                            <div className="flex flex-wrap items-center gap-5">
                               {p.logos.map((url, i) => (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img key={i} src={url} alt="" className="h-12 sm:h-14 w-auto max-w-[140px] object-contain" />
+                                <div key={i} className="h-14 sm:h-16 w-[110px] sm:w-[130px] flex items-center justify-center">
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img src={url} alt="" className="max-h-full max-w-full object-contain" />
+                                </div>
                               ))}
                             </div>
                           </div>
@@ -1389,10 +1395,14 @@ export default function ReportPage() {
                               {p.logos.length > 0 && (
                                 <div className="pt-4 mt-4 border-t border-gray-100">
                                   <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mb-3">Featuring</p>
-                                  <div className="flex flex-wrap items-center gap-4">
+                                  {/* Same fixed-box treatment as the Panel cards' Featuring
+                                      row, just scaled down to fit this narrower card. */}
+                                  <div className="flex flex-wrap items-center gap-3">
                                     {p.logos.map((url, li) => (
-                                      // eslint-disable-next-line @next/next/no-img-element
-                                      <img key={li} src={url} alt="" className="h-10 sm:h-12 w-auto max-w-[120px] object-contain" />
+                                      <div key={li} className="h-10 sm:h-12 w-[85px] sm:w-[100px] flex items-center justify-center">
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img src={url} alt="" className="max-h-full max-w-full object-contain" />
+                                      </div>
                                     ))}
                                   </div>
                                 </div>
