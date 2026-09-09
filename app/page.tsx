@@ -1355,14 +1355,6 @@ export default function ReportPage() {
                                 {p.description && (
                                   <p className="text-xs text-gray-500 leading-relaxed mb-3">{p.description}</p>
                                 )}
-                                {p.logos.length > 0 && (
-                                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                                    {p.logos.map((url, li) => (
-                                      // eslint-disable-next-line @next/next/no-img-element
-                                      <img key={li} src={url} alt="" className="h-5 w-auto max-w-[60px] object-contain" />
-                                    ))}
-                                  </div>
-                                )}
                               </div>
                               {/* Photo, then Watch Video, then any extra CTA — all flow
                                   naturally right after the text, same as the heading/speaker
@@ -1387,6 +1379,20 @@ export default function ReportPage() {
                                   ) : (
                                     p.websiteUrl && <WebsiteButton url={p.websiteUrl} />
                                   )}
+                                </div>
+                              )}
+                              {/* Featuring logos — moved to the bottom and sized to match
+                                  the Panel cards' "Featuring" footer, instead of the small
+                                  inline row that used to sit above the photo. */}
+                              {p.logos.length > 0 && (
+                                <div className="pt-4 mt-4 border-t border-gray-100">
+                                  <p className="text-[10px] uppercase tracking-wide text-gray-400 font-bold mb-3">Featuring</p>
+                                  <div className="flex flex-wrap items-center gap-4">
+                                    {p.logos.map((url, li) => (
+                                      // eslint-disable-next-line @next/next/no-img-element
+                                      <img key={li} src={url} alt="" className="h-10 sm:h-12 w-auto max-w-[120px] object-contain" />
+                                    ))}
+                                  </div>
                                 </div>
                               )}
                             </div>
