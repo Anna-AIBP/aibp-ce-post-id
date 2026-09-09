@@ -136,6 +136,7 @@ type ReportData = {
 }
 
 const TIER_SECTION_LABELS: Record<string, string> = {
+  PLATINUM: 'Platinum Sponsors',
   GOLD: 'Gold Sponsors',
   SILVER: 'Silver Sponsors',
   BRONZE: 'Bronze Sponsors',
@@ -144,9 +145,10 @@ const TIER_SECTION_LABELS: Record<string, string> = {
   'PAVILION HOST': 'Pavilion Hosts',
   EXHIBITOR: 'Exhibitors',
 }
-const TIER_ORDER = ['GOLD', 'SILVER', 'BRONZE', 'WORKSHOP PARTNER', 'AI SECURITY PARTNER', 'PAVILION HOST', 'EXHIBITOR']
+const TIER_ORDER = ['PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'WORKSHOP PARTNER', 'AI SECURITY PARTNER', 'PAVILION HOST', 'EXHIBITOR']
 // Per-tier title colour, matching the sponsor wall style used on the public site.
 const TIER_COLORS: Record<string, string> = {
+  PLATINUM: '#7C8798',
   GOLD: '#D4AF37',
   SILVER: '#9DA1A3',
   BRONZE: '#CD7F32',

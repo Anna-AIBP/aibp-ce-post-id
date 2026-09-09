@@ -113,6 +113,7 @@ function getReportSheetId() {
 // disappears just because its tier text doesn't match exactly.
 function normalizeSponsorTier(raw) {
   const t = String(raw || '').toUpperCase();
+  if (t.indexOf('PLATINUM') !== -1) return 'PLATINUM';
   if (t.indexOf('GOLD') !== -1) return 'GOLD';
   if (t.indexOf('SILVER') !== -1) return 'SILVER';
   if (t.indexOf('BRONZE') !== -1) return 'BRONZE';
