@@ -145,6 +145,12 @@ const TIER_SECTION_LABELS: Record<string, string> = {
   'PAVILION HOST': 'Pavilion Hosts',
   EXHIBITOR: 'Exhibitors',
 }
+// Plural section label only when a tier actually has more than one sponsor
+// (e.g. a single Platinum sponsor reads "Platinum Sponsor", not "Sponsors").
+function tierSectionLabel(tier: string, count: number) {
+  const label = TIER_SECTION_LABELS[tier] || tier
+  return count === 1 ? label.replace(/s$/, '') : label
+}
 const TIER_ORDER = ['PLATINUM', 'GOLD', 'SILVER', 'BRONZE', 'WORKSHOP PARTNER', 'AI SECURITY PARTNER', 'PAVILION HOST', 'EXHIBITOR']
 // Per-tier title colour, matching the sponsor wall style used on the public site.
 const TIER_COLORS: Record<string, string> = {
@@ -1529,7 +1535,7 @@ export default function ReportPage() {
                     className="text-lg sm:text-xl font-bold uppercase tracking-[0.2em] mb-6"
                     style={{ color: TIER_COLORS[tier] || DEFAULT_TIER_COLOR }}
                   >
-                    {TIER_SECTION_LABELS[tier] || tier}
+                    {tierSectionLabel(tier, sponsorsByTier[tier].length)}
                   </p>
                   <div className="flex flex-wrap justify-center gap-5">
                     {sponsorsByTier[tier].map((s) => (
