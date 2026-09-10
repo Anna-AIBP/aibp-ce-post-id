@@ -1437,14 +1437,17 @@ export default function ReportPage() {
           placeholder when NETWORKING_SESSIONS hasn't been filled in yet. */}
       <section id="networking" className="border-b border-gray-100">
         <SectionBanner title="Curated Meetings & Introductions" subtitle="Networking & private sessions" meta={meta} />
-        {networkingSessions.length === 0 ? (
+        {/* Guard against blank rows in NETWORKING_SESSIONS that have an ID
+            but no title filled in yet — otherwise they render as an empty
+            card (a box with no content) in the grid. */}
+        {networkingSessions.filter((n) => n.title).length === 0 ? (
           <div className={`px-5 py-16 text-center ${BAND_CLASSES[bandIndex++ % BAND_CLASSES.length]}`}>
             <p className="text-sm text-gray-400">Networking session details are still being put together — check back soon.</p>
           </div>
         ) : (
           <div className={`px-5 sm:px-10 py-10 sm:py-14 ${BAND_CLASSES[bandIndex++ % BAND_CLASSES.length]}`}>
             <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {networkingSessions.map((n) => (
+              {networkingSessions.filter((n) => n.title).map((n) => (
                 <Reveal key={n.id}>
                   <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm h-full">
                     <div className="flex items-start justify-between gap-3 mb-1">
